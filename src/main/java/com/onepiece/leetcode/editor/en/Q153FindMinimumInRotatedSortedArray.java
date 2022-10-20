@@ -62,6 +62,7 @@
     //编号：[153]
       public static void main(String[] args) {
            Solution solution = new Q153FindMinimumInRotatedSortedArray().new Solution();
+          System.out.println(solution.findMin(new int[]{3, 4, 5, 1, 2}));
       }
       //leetcode submit region begin(Prohibit modification and deletion)
 class Solution {
@@ -71,8 +72,9 @@ class Solution {
             return nums[l];
         }
         while (r - l > 1) {
-            int m = l + (r - l) >> 1;
-            if (nums[m] > nums[l]) {
+            // The right shift operation should be enclosed in parentheses
+            int m = l + ((r - l) >> 1);
+            if (nums[m] > nums[r]) {
                 l = m;
             }else {
                 r = m;
