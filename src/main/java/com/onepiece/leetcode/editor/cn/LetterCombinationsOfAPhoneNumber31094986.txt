@@ -1,0 +1,39 @@
+class Solution {
+       public List<String> letterCombinations(String digits) {
+        
+        List<String> ans = new ArrayList<>();
+           if(digits.length()==0) return ans;
+        permute(ans,digits,new StringBuilder(),0);
+        return ans;
+    }
+
+    public static final Map<Character,String> telMap;
+    static {
+        telMap = new HashMap<>();
+        telMap.put('2', "abc");
+        telMap.put('3', "def");
+        telMap.put('4', "ghi");
+        telMap.put('5', "jkl");
+        telMap.put('6', "mno");
+        telMap.put('7', "pqrs");
+        telMap.put('8', "tuv");
+        telMap.put('9', "wxyz");
+
+    }
+
+    private void permute(List<String> ans, String digits, StringBuilder stringBuilder, int index) {
+        if (index == digits.length()) {
+            ans.add(stringBuilder.toString());
+        } else {
+            String telStr = telMap.get(digits.charAt(index));
+            for (int j = 0; j < telStr.length(); j++) {
+                stringBuilder.append(telStr.charAt(j));
+                permute(ans, digits, stringBuilder, index + 1);
+                stringBuilder.deleteCharAt(stringBuilder.length()-1);
+            }
+
+        }
+    }
+}
+//runtime:1 ms
+//memory:35.4 MB
