@@ -47,7 +47,11 @@
 
   
   package com.onepiece.leetcode.editor.en;
-  public class Q1TwoSum{
+
+import java.util.LinkedHashMap;
+import java.util.Map;
+
+public class Q1TwoSum{
  //2022-09-25 16:16:12
     //Two Sum
     //编号：[1]
@@ -57,8 +61,17 @@
       //leetcode submit region begin(Prohibit modification and deletion)
 class Solution {
     public int[] twoSum(int[] nums, int target) {
-        return nums;
+        Map<Integer, Integer> map = new LinkedHashMap<>();
+        for (int i = 0; i < nums.length; i++) {
+            int j = target - nums[i];
+            if (map.containsKey(j)) {
+                return new int[]{i, map.get(j)};
+            }
+            map.put(nums[i], i);
+        }
+        return new int[]{};
     }
+
 }
 //leetcode submit region end(Prohibit modification and deletion)
 

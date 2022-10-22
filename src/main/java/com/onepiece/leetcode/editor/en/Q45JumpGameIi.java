@@ -55,7 +55,7 @@ class Solution {
     public int jump(int[] nums) {
         int steps = 0;
         int start = 0;
-        int end = 1;
+        int end = 1;// Todo why end initial with 1
         //
         while (end < nums.length) {
             // 确定最远的跳跃范围

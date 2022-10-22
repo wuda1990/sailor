@@ -45,6 +45,7 @@ package com.onepiece.leetcode.editor.en;
     //编号：[75]
       public static void main(String[] args) {
            Solution solution = new Q75SortColors().new Solution();
+          solution.sortColors(new int[]{2, 0, 2, 1, 1, 0});
            solution.swap(new int[]{1,2,3},0,2);
       }
       //leetcode submit region begin(Prohibit modification and deletion)
@@ -52,6 +53,7 @@ class Solution {
           // only 0,1,2 exists in array, so set 1 as pivotal number, then all 0 on the left , all 2 on the right
     public void sortColors(int[] nums) {
         int l = 0, r = nums.length - 1;
+        // nums on the left of l eq 0, nums on the right of r eq 2.
         for (int k = l; k <= r; ) {
             if (nums[k] == 0) {
                 swap(nums, k++, l++);
