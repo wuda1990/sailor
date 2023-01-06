@@ -75,20 +75,41 @@ class Solution {
     public List<Integer> preorderTraversal(TreeNode root) {
         List<Integer> ans = new LinkedList<>();
         Stack<TreeNode> stack = new Stack<>();
-        TreeNode p = root;
-        while (!stack.isEmpty() || p!=null) {
-            while (p != null) {
-                ans.add(p.val);
-                stack.push(p);
-                p = p.left;
+        if (root != null) {
+            stack.push(root);
+        }
+
+        while (!stack.isEmpty()) {
+            TreeNode p = stack.pop();
+            ans.add(p.val);
+            // right first
+            if (p.right != null) {
+                stack.push(p.right);
             }
-            if (!stack.isEmpty()) {
-                p = stack.pop();
-                p = p.right;
+            if (p.left != null) {
+                stack.push(p.left);
             }
         }
         return ans;
     }
+//    public List<Integer> preorderTraversal2(TreeNode root) {
+//        List<Integer> ans = new LinkedList<>();
+//        Stack<TreeNode> stack = new Stack<>();
+//        TreeNode p = root;
+//        while (!stack.isEmpty() || p!=null) {
+//            while (p != null) {
+//                ans.add(p.val);
+//                stack.push(p);
+//                p = p.left;
+//            }
+//            if (!stack.isEmpty()) {
+//                p = stack.pop();
+//                p = p.right;
+//            }
+//        }
+//        return ans;
+//    }
+
 }
 //leetcode submit region end(Prohibit modification and deletion)
 
