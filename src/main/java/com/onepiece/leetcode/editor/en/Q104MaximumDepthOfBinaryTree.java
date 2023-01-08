@@ -62,28 +62,34 @@ public class Q104MaximumDepthOfBinaryTree{
 class Solution {
     private int max = 0;
     public int maxDepth(TreeNode root) {
-//        dfs(root, 0);
-//        return max;
+        if (root == null) {
+            return 0;
+        }
+        dfs(root, 1);
+        return max;
+    }
+    // depth is the node numbers from root to node parent
+    private void dfs(TreeNode node,int depth) {
+        max = Math.max(max, depth);
+        if (node == null) {
+            return;
+        }
+        if (node.left == null && node.right == null) {
+            return;
+        }
+        dfs(node.left, depth + 1);
+        dfs(node.right, depth + 1);
+    }
+
+
+    public int maxDepth2(TreeNode root) {
         // 返回条件处理
         if (root == null) {
             return 0;
         }
         // divide：分左右子树分别计算
         // conquer：合并左右子树结果，即取二者中的最大值加一
-        return Math.max(maxDepth(root.left), maxDepth(root.right)) + 1;
-    }
-
-    // k is the node numbers from root to node parent
-    private void dfs(TreeNode node,int k) {
-        if (node == null) {
-            return;
-        }
-        if (node.left == null && node.right == null) {
-            max = Math.max(max, k + 1);
-            return;
-        }
-        dfs(node.left, k + 1);
-        dfs(node.right, k + 1);
+        return Math.max(maxDepth2(root.left), maxDepth2(root.right)) + 1;
     }
 }
 //leetcode submit region end(Prohibit modification and deletion)
