@@ -87,17 +87,16 @@ class Solution {
         if (root==null) {
             return;
         }
-        int currentSum = root.val + sum;
         stack.push(root.val);
         //only leaf node
-        if (currentSum == targetSum && root.left == null && root.right == null) {
+        if (sum + root.val == targetSum && root.left == null && root.right == null) {
             ans.add(new ArrayList<>(stack));
             stack.pop();
             return;
         }
 
-        backTrack(root.left, currentSum, targetSum, stack, ans);
-        backTrack(root.right, currentSum, targetSum, stack, ans);
+        backTrack(root.left, sum + root.val, targetSum, stack, ans);
+        backTrack(root.right, sum + root.val, targetSum, stack, ans);
         stack.pop();
     }
 }
