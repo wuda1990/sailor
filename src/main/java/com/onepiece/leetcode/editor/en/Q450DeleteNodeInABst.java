@@ -110,6 +110,7 @@ class Solution {
             //以右节点当作根节点，这样树的高度更大
             p.left = root.left;
             return root.right;
+
         }
 
         return root;
