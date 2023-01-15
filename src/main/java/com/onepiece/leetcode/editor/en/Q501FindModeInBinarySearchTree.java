@@ -56,6 +56,7 @@ public class Q501FindModeInBinarySearchTree{
     //编号：[501]
       public static void main(String[] args) {
            Solution solution = new Q501FindModeInBinarySearchTree().new Solution();
+          solution.findMode(TreeNode.build(new String[]{"1", "null", "2", "2"}));
       }
       //leetcode submit region begin(Prohibit modification and deletion)
 /**
