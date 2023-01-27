@@ -48,7 +48,7 @@ package com.onepiece.leetcode.editor.en;
     //编号：[45]
       public static void main(String[] args) {
            Solution solution = new Q45JumpGameIi().new Solution();
-          System.out.println(solution.jump(new int[]{2, 3, 1, 1, 4}));
+          System.out.println(solution.jump(new int[]{2, 1, 3, 1, 4}));
       }
       //leetcode submit region begin(Prohibit modification and deletion)
 class Solution {
@@ -56,6 +56,7 @@ class Solution {
         int steps = 0;
         int start = 0;
         int end = 1;// Todo why end initial with 1
+        //because firstly we select one number, 左闭右开
         //
         while (end < nums.length) {
             // 确定最远的跳跃范围

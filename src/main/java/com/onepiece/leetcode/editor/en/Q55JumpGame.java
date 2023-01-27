@@ -34,26 +34,29 @@
 
 
 package com.onepiece.leetcode.editor.en;
-  public class Q55JumpGame{
- //2022-10-03 15:43:00
+
+public class Q55JumpGame {
+    //2022-10-03 15:43:00
     //Jump Game
     //编号：[55]
-      public static void main(String[] args) {
-           Solution solution = new Q55JumpGame().new Solution();
-      }
-      //leetcode submit region begin(Prohibit modification and deletion)
-class Solution {
-    public boolean canJump(int[] nums) {
-        int maxReached = 0;
-        for (int i = 0; i < nums.length; i++) {
-            if (i > maxReached) {
-                return false;
-            }
-            maxReached = Math.max(maxReached, i + nums[i]);
-        }
-        return true;
+    public static void main(String[] args) {
+        Solution solution = new Q55JumpGame().new Solution();
+        solution.canJump(new int[]{3,2,1,0,4});
     }
-}
+
+    //leetcode submit region begin(Prohibit modification and deletion)
+    class Solution {
+        public boolean canJump(int[] nums) {
+            int maxReached = 0;
+            for (int i = 0; i < nums.length; i++) {
+                if (i > maxReached) {
+                    return false;
+                }
+                maxReached = Math.max(maxReached, i + nums[i]);
+            }
+            return true;
+        }
+    }
 //leetcode submit region end(Prohibit modification and deletion)
 
-  }
+}
