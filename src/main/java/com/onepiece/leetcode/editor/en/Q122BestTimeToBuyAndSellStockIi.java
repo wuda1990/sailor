@@ -69,6 +69,21 @@ public class Q122BestTimeToBuyAndSellStockIi {
             }
             return max;
         }
+
+        public int maxProfitByDp(int[] prices) {
+            int[][] dp = new int[prices.length][2];
+            //dp[i][0]表示第i天持有股票时的现金
+            //dp[i][1]表示第i天不持有股票时的现金
+            dp[0][0] = -prices[0];
+            dp[0][1] = 0;
+            for (int i = 1; i < prices.length; i++) {
+                //第i天什么也不做(原本就持有股票)，第i天买入股票(未持股票)，两种情况求现金最大值
+                dp[i][0] = Math.max(dp[i - 1][0], dp[i - 1][1] - prices[i]);
+                //第i天什么也不做(原本就不持有股票)，第i天卖出股票(持有股票)，两种情况求现金最大值
+                dp[i][1] = Math.max(dp[i - 1][1], dp[i - 1][0] + prices[i]);
+            }
+            return dp[prices.length - 1][1];
+        }
     }
 //leetcode submit region end(Prohibit modification and deletion)
 
