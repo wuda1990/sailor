@@ -27,7 +27,10 @@
 
 
   package com.onepiece.leetcode.editor.en;
-  public class Q215KthLargestElementInAnArray{
+
+import java.util.PriorityQueue;
+
+public class Q215KthLargestElementInAnArray{
  //2022-10-09 09:32:08
     //Kth Largest Element in an Array
     //编号：[215]
@@ -60,6 +63,7 @@ class Solution {
               } else if (count > k) {
                   return findKthLargest(nums, index + 1, r, k);
               }else {
+                  //左半部分都是比nums[index]小的数，不包含右半部分的数，所以k要去掉count
                   return findKthLargest(nums, l, index - 1, k - count);
               }
           }
@@ -109,6 +113,17 @@ class Solution {
               nums[j] = tmp;
           }
 
+      }
+
+      public int findKthLargestByHeap(int[] nums, int k) {
+          PriorityQueue<Integer> priorityQueue = new PriorityQueue<>();
+          for (int i = 0; i < nums.length; i++) {
+              priorityQueue.add(nums[i]);
+              if (priorityQueue.size() > k) {
+                  priorityQueue.poll();
+              }
+          }
+          return priorityQueue.peek();
       }
 
 //leetcode submit region end(Prohibit modification and deletion)
