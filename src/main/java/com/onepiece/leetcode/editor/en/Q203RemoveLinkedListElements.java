@@ -61,6 +61,12 @@ public class Q203RemoveLinkedListElements{
  * }
  */
 class Solution {
+    /**
+     * 链表操作画图搞清楚指针的走向，防止空指针
+     * @param head
+     * @param val
+     * @return
+     */
     public ListNode removeElements1(ListNode head, int val) {
         ListNode dummy = new ListNode();
         dummy.next = head;
