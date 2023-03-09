@@ -38,7 +38,7 @@
 // Related Topics Linked List Recursion 👍 14843 👎 250
 
 
-package com.onepiece.leetcode.editor.en;
+package com.onepiece.leetcode.editor.en.linkedlist;
 
 import com.onepiece.leetcode.editor.ListNode;
 
@@ -58,19 +58,31 @@ public class Q206ReverseLinkedList {
      */
     class Solution {
 
-        public ListNode reverseList(ListNode head) {
-            return reverse(head, null);
+        public ListNode reverseList2(ListNode head) {
+            return reverseListInt(head, null);
         }
 
-        private ListNode reverse(final ListNode p, final ListNode pre) {
+        private ListNode reverseListInt(ListNode p, ListNode pre) {
             if (p == null) {
                 return pre;
             }
             ListNode next = p.next;
+            //set current p's next to the pre value
             p.next = pre;
-            return reverse(next, p);
+            return reverseListInt(next, p);
         }
 
+        public ListNode reverseList(ListNode head) {
+            ListNode pre = null, next = null;
+            ListNode p = head;
+            while (p != null) {
+                next = p.next;
+                p.next = pre;
+                pre = p;
+                p = next;
+            }
+            return pre;
+        }
     }
 //leetcode submit region end(Prohibit modification and deletion)
 
