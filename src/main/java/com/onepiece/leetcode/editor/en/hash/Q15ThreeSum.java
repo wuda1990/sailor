@@ -45,7 +45,7 @@
 // 👍 24543 👎 2219
 
 
-package com.onepiece.leetcode.editor.en;
+package com.onepiece.leetcode.editor.en.hash;
 
 import java.util.ArrayList;
 import java.util.Arrays;
