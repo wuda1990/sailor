@@ -31,24 +31,50 @@
 package com.onepiece.leetcode.editor.en.stackQueue;
 
 import java.util.Comparator;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.PriorityQueue;
+import java.util.function.BiFunction;
 
 public class Q347TopKFrequentElements {
 
     public static void main(String[] args) {
         Solution solution = new Q347TopKFrequentElements().new Solution();
 //        solution.topKFrequent(new int[]{1, 1, 1, 2, 2, 3}, 2);
-        solution.topKFrequent(new int[]{-1, -1}, 1);
+//        solution.topKFrequent(new int[]{-1, -1}, 1);
+        solution.topKFrequent(new int[]{1}, 1);
     }
 
     //leetcode submit region begin(Prohibit modification and deletion)
     class Solution {
 
         public int[] topKFrequent(int[] nums, int k) {
+            Map<Integer, Integer> map = new HashMap<>();
+            for (int i : nums) {
+                map.compute(i, (key, oldValue) -> oldValue == null ? 1 : oldValue + 1);
+            }
+            //使用最小堆
+            PriorityQueue<int[]> priorityQueue = new PriorityQueue<>(k + 1, Comparator.comparingInt(o -> o[1]));
+            for (Map.Entry<Integer, Integer> entry : map.entrySet()) {
+                priorityQueue.offer(new int[]{entry.getKey(), entry.getValue()});
+                if (priorityQueue.size() > k) {
+                    priorityQueue.poll();
+                }
+            }
+            int[] result = new int[k];
+            for (int i = 0; i < k; i++) {
+                result[i] = priorityQueue.poll()[0];
+            }
+            return result;
+
+        }
+
+        public int[] topKFrequent2(int[] nums, int k) {
             int[] count = new int[20001];
             for (int i : nums) {
                 count[i + 10000]++;
             }
+            //使用最大堆
             PriorityQueue<Pair> priorityQueue = new PriorityQueue<>(nums.length,
                 Comparator.comparingInt(Pair::getRight).reversed());
 

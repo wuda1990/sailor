@@ -30,7 +30,7 @@
 // Related Topics Two Pointers String String Matching 👍 2928 👎 141
 
 
-package com.onepiece.leetcode.editor.en;
+package com.onepiece.leetcode.editor.en.string;
 
 public class Q28FindTheIndexOfTheFirstOccurrenceInAString {
 
