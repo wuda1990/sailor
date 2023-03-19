@@ -37,7 +37,7 @@
 // Related Topics Stack Tree Depth-First Search Binary Tree 👍 5032 👎 140
 
 
-package com.onepiece.leetcode.editor.en;
+package com.onepiece.leetcode.editor.en.tree;
 
 import com.onepiece.leetcode.editor.TreeNode;
 
