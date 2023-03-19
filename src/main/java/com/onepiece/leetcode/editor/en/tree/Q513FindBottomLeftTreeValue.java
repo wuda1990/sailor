@@ -27,7 +27,7 @@
 // 👍 2697 👎 237
 
 
-package com.onepiece.leetcode.editor.en;
+package com.onepiece.leetcode.editor.en.tree;
 
 import com.onepiece.leetcode.editor.TreeNode;
 

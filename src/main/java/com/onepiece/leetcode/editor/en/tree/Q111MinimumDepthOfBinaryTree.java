@@ -31,11 +31,11 @@
 // 👍 5246 👎 1061
 
 
-  package com.onepiece.leetcode.editor.en;
+  package com.onepiece.leetcode.editor.en.tree;
 
 import com.onepiece.leetcode.editor.TreeNode;
 
-public class Q111MinimumDepthOfBinaryTree{
+public class Q111MinimumDepthOfBinaryTree {
  //2023-01-08 15:26:12
     //Minimum Depth of Binary Tree
     //编号：[111]

@@ -54,68 +54,72 @@
 // 👍 6815 👎 173
 
 
-  package com.onepiece.leetcode.editor.en;
+package com.onepiece.leetcode.editor.en;
 
 import com.onepiece.leetcode.editor.TreeNode;
 
-public class Q450DeleteNodeInABst{
- //2023-01-15 16:51:58
+public class Q450DeleteNodeInABst {
+    //2023-01-15 16:51:58
     //Delete Node in a BST
     //编号：[450]
-      public static void main(String[] args) {
-           Solution solution = new Q450DeleteNodeInABst().new Solution();
-          TreeNode treeNode = solution.deleteNode(TreeNode.build(new String[]{"50", "30", "70", "null", "40", "60", "80"}), 50);
-      }
-      //leetcode submit region begin(Prohibit modification and deletion)
-/**
- * Definition for a binary tree node.
- * public class TreeNode {
- *     int val;
- *     TreeNode left;
- *     TreeNode right;
- *     TreeNode() {}
- *     TreeNode(int val) { this.val = val; }
- *     TreeNode(int val, TreeNode left, TreeNode right) {
- *         this.val = val;
- *         this.left = left;
- *         this.right = right;
- *     }
- * }
- */
-class Solution {
+    public static void main(String[] args) {
+        Solution solution = new Q450DeleteNodeInABst().new Solution();
+        TreeNode treeNode = solution.deleteNode(TreeNode.build(new String[]{"50", "30", "70", "null", "40", "60", "80"}), 50);
+    }
+    //leetcode submit region begin(Prohibit modification and deletion)
 
-    public TreeNode deleteNode(TreeNode root, int key) {
-        if (root == null) {
-            return null;
-        }
-        if (root.val > key) {
-            root.left = deleteNode(root.left, key);
-        } else if (root.val < key) {
-            root.right = deleteNode(root.right, key);
-        }else {
-            if (root.left == null) {
-                return root.right;
+    /**
+     * Definition for a binary tree node.
+     * public class TreeNode {
+     * int val;
+     * TreeNode left;
+     * TreeNode right;
+     * TreeNode() {}
+     * TreeNode(int val) { this.val = val; }
+     * TreeNode(int val, TreeNode left, TreeNode right) {
+     * this.val = val;
+     * this.left = left;
+     * this.right = right;
+     * }
+     * }
+     */
+    class Solution {
+
+        public TreeNode deleteNode(TreeNode root, int key) {
+            if (root == null) {
+                return null;
             }
-            if (root.right == null) {
-                return root.left;
-            }
-            TreeNode p = root.right;
-            while (p.left != null) {
-                p = p.left;
-            }
-            // p is the minValue in right subTree
-            //把根节点的值改成最小值，并删除掉右子树里的最小值
+            if (root.val > key) {
+                root.left = deleteNode(root.left, key);
+            } else if (root.val < key) {
+                root.right = deleteNode(root.right, key);
+            } else {
+                if (root.left == null && root.right == null) {
+                    return null;
+                }
+                if (root.left == null) {
+                    return root.right;
+                }
+                if (root.right == null) {
+                    return root.left;
+                }
+                TreeNode p = root.right;
+                while (p.left != null) {
+                    p = p.left;
+                }
+                // p is the minValue in right subTree
+                //把根节点的值改成最小值，并删除掉右子树里的最小值
 //            root.val = p.val;
 //            root.right = deleteNode(root.right, p.val);
-            //以右节点当作根节点，这样树的高度更大
-            p.left = root.left;
-            return root.right;
+                //以右节点当作根节点，这样树的高度更大
+                p.left = root.left;
+                return root.right;
 
+            }
+
+            return root;
         }
-
-        return root;
     }
-}
 //leetcode submit region end(Prohibit modification and deletion)
 
-  }
+}

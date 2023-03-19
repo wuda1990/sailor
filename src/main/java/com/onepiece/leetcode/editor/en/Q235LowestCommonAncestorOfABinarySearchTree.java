@@ -67,21 +67,33 @@ public class Q235LowestCommonAncestorOfABinarySearchTree{
  */
 
 class Solution {
-    public TreeNode lowestCommonAncestor(TreeNode root, TreeNode p, TreeNode q) {
+    public TreeNode lowestCommonAncestorPostOrder(TreeNode root, TreeNode p, TreeNode q) {
         int min = Math.min(p.val, q.val);
         int max = Math.max(p.val, q.val);
         return dfs(root, min, max);
     }
 
     TreeNode dfs(TreeNode root, int min, int max) {
-        if (min < root.val && max > root.val || root.val == min) {
-            return root;
-        } else if (max < root.val) {
+        if (max < root.val) {
             return dfs(root.left, min, max);
         } else if (min > root.val) {
             return dfs(root.right, min, max);
         }
         return root;
+    }
+
+    public TreeNode lowestCommonAncestor(TreeNode root, TreeNode p, TreeNode q) {
+        TreeNode t = root;
+        while (t != null) {
+            if (t.val > p.val && t.val > q.val) {
+                t = t.left;
+            } else if (t.val < p.val && t.val < q.val) {
+                t = t.right;
+            }else {
+                return t;
+            }
+        }
+        return null;
     }
 }
 //leetcode submit region end(Prohibit modification and deletion)

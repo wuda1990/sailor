@@ -32,13 +32,13 @@
 // 👍 2583 👎 138
 
 
-  package com.onepiece.leetcode.editor.en;
+  package com.onepiece.leetcode.editor.en.tree;
 
 import com.onepiece.leetcode.editor.TreeNode;
 
 import java.util.LinkedList;
 
-public class Q530MinimumAbsoluteDifferenceInBst{
+public class Q530MinimumAbsoluteDifferenceInBst {
  //2023-01-15 09:53:24
     //Minimum Absolute Difference in BST
     //编号：[530]
