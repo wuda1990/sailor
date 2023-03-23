@@ -41,6 +41,7 @@ import java.util.List;
 public class Q78Subsets {
     public static void main(String[] args) {
         Solution solution = new Q78Subsets().new Solution();
+        solution.subsets(new int[]{1, 2, 3});
     }
 
     //leetcode submit region begin(Prohibit modification and deletion)
@@ -53,9 +54,6 @@ public class Q78Subsets {
         }
 
         private void backTrack(int[] nums, int start, Deque<Integer> list,List<List<Integer>> ans) {
-            if (start > nums.length) {
-                return;
-            }
             ans.add(new ArrayList<>(list));
             for (int i = start; i < nums.length; i++) {
                 list.offerLast(nums[i]);

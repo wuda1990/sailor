@@ -28,7 +28,7 @@
 // 👍 2454 👎 180
 
 
-package com.onepiece.leetcode.editor.en;
+package com.onepiece.leetcode.editor.en.backtrack;
 
 import java.util.ArrayList;
 import java.util.Deque;

@@ -57,34 +57,17 @@ public class Q455AssignCookies {
 
     //leetcode submit region begin(Prohibit modification and deletion)
     class Solution {
-        public int findContentChildren0(int[] g, int[] s) {
-            Arrays.sort(g);
-            Arrays.sort(s);
-            int result = 0;
-            int j = 0;
-            for (int i = 0; i < g.length; i++) {
-                while (j < s.length && g[i] > s[j]) {
-                    j++;
-                }
-                if (j >= s.length) {
-                    break;
-                }
-                j++;
-                result++;
-            }
-            return result;
-        }
 
         public int findContentChildren(int[] g, int[] s) {
             Arrays.sort(g);
             Arrays.sort(s);
             int result = 0;
             int i = 0;
-            for (int j = 0; j < s.length && i < g.length; j++) {
+            for (int j = 0; j < s.length; j++) {
                 //without the inner loop
-                if (g[i] <= s[j]) {
-                    i++;
+                if (i < g.length && g[i] <= s[j]) {
                     result++;
+                    i++;
                 }
             }
             return result;

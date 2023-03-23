@@ -23,7 +23,7 @@
 // 👍 7383 👎 207
 
 
-package com.onepiece.leetcode.editor.en;
+package com.onepiece.leetcode.editor.en.backtrack;
 
 import java.util.*;
 
