@@ -48,7 +48,7 @@
 // 👍 1241 👎 95
 
 
-package com.onepiece.leetcode.editor.en;
+package com.onepiece.leetcode.editor.en.greedy;
 
 import java.util.stream.IntStream;
 

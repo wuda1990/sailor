@@ -42,7 +42,7 @@
 // 👍 27707 👎 1229
 
 
-package com.onepiece.leetcode.editor.en;
+package com.onepiece.leetcode.editor.en.greedy;
 
 public class Q53MaximumSubarray {
 
