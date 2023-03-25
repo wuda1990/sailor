@@ -39,7 +39,7 @@
 // 👍 12850 👎 370
 
 
-package com.onepiece.leetcode.editor.en;
+package com.onepiece.leetcode.editor.en.dp;
 
 public class Q62UniquePaths {
     public static void main(String[] args) {
