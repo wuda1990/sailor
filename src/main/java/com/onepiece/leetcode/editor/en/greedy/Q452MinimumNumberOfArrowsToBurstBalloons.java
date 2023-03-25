@@ -54,7 +54,7 @@
 // 👍 5818 👎 160
 
 
-package com.onepiece.leetcode.editor.en;
+package com.onepiece.leetcode.editor.en.greedy;
 
 import java.util.Arrays;
 import java.util.Comparator;
