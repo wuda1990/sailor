@@ -51,6 +51,7 @@
 package com.onepiece.leetcode.editor.en.dp;
 
 public class Q1049LastStoneWeightIi {
+
     public static void main(String[] args) {
         Solution solution = new Q1049LastStoneWeightIi().new Solution();
 //        int result = solution.lastStoneWeightII(new int[]{2, 7, 4, 1, 8, 1});
@@ -60,6 +61,7 @@ public class Q1049LastStoneWeightIi {
 
     //leetcode submit region begin(Prohibit modification and deletion)
     class Solution {
+
         public int lastStoneWeightII(int[] stones) {
             int sum = 0;
             for (int i = 0; i < stones.length; i++) {

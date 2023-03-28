@@ -49,20 +49,20 @@
 package com.onepiece.leetcode.editor.en;
 
 public class Q494TargetSum {
+
     public static void main(String[] args) {
         Solution solution = new Q494TargetSum().new Solution();
-//        solution.findTargetSumWays(new int[]{1, 1, 1, 1, 1}, 3);
-        solution.findTargetSumWays(new int[]{100}, -200);
+        solution.findTargetSumWays(new int[]{1, 1, 1, 1, 1}, 3);
+//        solution.findTargetSumWays(new int[]{100}, -200);
     }
 
     //leetcode submit region begin(Prohibit modification and deletion)
+
     /**
-     * x 是取正数的和,有
-     * x - (sum-x) = target
-     * x == (sum+target)/2
-     * 转化成0，1背包问题,在n个物品里,是否选择+1，凑满容量为x的组合个数
+     * x 是取正数的和,有 x - (sum-x) = target x == (sum+target)/2 转化成0，1背包问题,在n个物品里,是否选择+1，凑满容量为x的组合个数
      */
     class Solution {
+
         public int findTargetSumWays(int[] nums, int target) {
             int sum = 0;
             for (int i = 0; i < nums.length; i++) {
@@ -83,7 +83,7 @@ public class Q494TargetSum {
                 for (int j = 0; j <= x; j++) {
                     if (j >= nums[i]) {
                         dp[i][j] = dp[i - 1][j] + dp[i - 1][j - nums[i]];
-                    }else {
+                    } else {
                         dp[i][j] = dp[i - 1][j];
                     }
 
