@@ -44,7 +44,7 @@
 // 👍 13329 👎 561
 
 
-package com.onepiece.leetcode.editor.en;
+package com.onepiece.leetcode.editor.en.dp;
 
 import java.util.Arrays;
 import java.util.HashSet;
