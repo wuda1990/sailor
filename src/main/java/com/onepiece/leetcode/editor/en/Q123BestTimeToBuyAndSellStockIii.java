@@ -63,7 +63,6 @@ public class Q123BestTimeToBuyAndSellStockIii {
 
         public int maxProfit(int[] prices) {
             int[][] dp = new int[prices.length][4];
-            int tradeNo = 0;
             //dp[i][0]表示第i天第一次持有股票时的现金
             //dp[i][1]表示第i天第一次不持有股票是的现金
             //dp[i][2]表示第i天第二次持有股票时的现金

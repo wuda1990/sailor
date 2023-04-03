@@ -64,6 +64,7 @@ public class Q455AssignCookies {
             Arrays.sort(s);
             int result = 0;
             int i = 0;
+            //饼干和小孩都按升序排列，小饼干优先给胃口小的
             for (int j = 0; j < s.length; j++) {
                 //without the inner loop
                 if (i < g.length && g[i] <= s[j]) {
