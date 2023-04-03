@@ -38,7 +38,7 @@
 // 👍 22865 👎 724
 
 
-package com.onepiece.leetcode.editor.en;
+package com.onepiece.leetcode.editor.en.dp;
 
 public class Q121BestTimeToBuyAndSellStock {
 
