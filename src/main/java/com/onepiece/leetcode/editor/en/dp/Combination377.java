@@ -1,4 +1,4 @@
-package com.onepiece.leetcode.editor.en.dp;//Given an array of distinct integers nums and a target integer target, return
+//Given an array of distinct integers nums and a target integer target, return
 //the number of possible combinations that add up to target. 
 //
 // The test cases are generated so that the answer can fit in a 32-bit integer. 
@@ -46,19 +46,22 @@ package com.onepiece.leetcode.editor.en.dp;//Given an array of distinct integers
 //
 // Related Topics Array Dynamic Programming 👍 5173 👎 535
 
+package com.onepiece.leetcode.editor.en.dp;
 
 public class Combination377 {
+
     public static void main(String[] args) {
         Solution solution = new Combination377().new Solution();
         System.out.println(solution.combinationSum4(new int[]{1, 2, 3}, 4));
     }
+
     //leetcode submit region begin(Prohibit modification and deletion)
     class Solution {
+
         /**
-         * calculate the combination count using dp
-         * Note that different sequences are counted as different combinations.
-         * so iterate 1->target,then iterate array nums.
-         * it is similar to coinChange
+         * calculate the combination count using dp Note that different sequences are counted as different combinations.
+         * so iterate 1->target,then iterate array nums. it is similar to coinChange
+         *
          * @param nums
          * @param target
          * @return
@@ -74,8 +77,19 @@ public class Combination377 {
                     }
                     dp[i] = dp[i] + dp[i - n];
                 }
+                System.out.println("capcity:" + i);
+                print(dp);
             }
             return dp[target];
+        }
+
+        private void print(int[] arr) {
+            StringBuilder sb = new StringBuilder();
+            for (int i : arr) {
+                sb.append(i).append(",");
+            }
+            sb.deleteCharAt(sb.length() - 1);
+            System.out.println(sb);
         }
     }
 //leetcode submit region end(Prohibit modification and deletion)

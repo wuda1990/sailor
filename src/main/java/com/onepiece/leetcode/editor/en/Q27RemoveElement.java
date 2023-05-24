@@ -69,50 +69,60 @@
 // 👍 4629 👎 6353
 
 
-  package com.onepiece.leetcode.editor.en;
-  public class Q27RemoveElement{
- //2022-10-29 23:30:04
+package com.onepiece.leetcode.editor.en;
+
+public class Q27RemoveElement {
+
+    //2022-10-29 23:30:04
     //Remove Element
     //编号：[27]
-      public static void main(String[] args) {
-           Solution solution = new Q27RemoveElement().new Solution();
+    public static void main(String[] args) {
+        Solution solution = new Q27RemoveElement().new Solution();
 //          System.out.println(solution.removeElement(new int[]{3, 2, 2, 3}, 3));
-          System.out.println(solution.removeElement(new int[]{2}, 3));
-      }
-      //leetcode submit region begin(Prohibit modification and deletion)
-class Solution {
-    public int removeElement1(int[] nums, int val) {
-        int l = 0;
-        int r = nums.length - 1;
-        while (true) {
-            while (l < nums.length && nums[l] != val) l++;
-            while (r >= 0 && nums[r] == val) r--;
-            if (l>=r) break;
-            swap(nums, l, r);
-        }
-        return l;
+        System.out.println(solution.removeElement(new int[]{2}, 3));
     }
 
-          private void swap(int[] nums, int i, int j) {
-              nums[i] = nums[i] ^ nums[j];
-              nums[j] = nums[i] ^ nums[j];
-              nums[i] = nums[i] ^ nums[j];
-          }
+    //leetcode submit region begin(Prohibit modification and deletion)
+    class Solution {
 
-          // solution 2 :use slow and fast pointer
-          public int removeElement(int[] nums, int val) {
+        public int removeElement(int[] nums, int val) {
+            int l = 0;
+            int r = nums.length - 1;
+            while (true) {
+                while (l < nums.length && nums[l] != val) {
+                    l++;
+                }
+                while (r >= 0 && nums[r] == val) {
+                    r--;
+                }
+                if (l >= r) {
+                    break;
+                }
+                swap(nums, l, r);
+            }
+            return l;
+        }
+
+        private void swap(int[] nums, int i, int j) {
+            nums[i] = nums[i] ^ nums[j];
+            nums[j] = nums[i] ^ nums[j];
+            nums[i] = nums[i] ^ nums[j];
+        }
+
+        // solution 2 :use slow and fast pointer
+        public int removeElement1(int[] nums, int val) {
             int slow = 0;
             int fast = 0;
-              while (fast < nums.length) {
-                  if (nums[fast] != val) {
-                      nums[slow] = nums[fast];
-                      slow++;
-                  }
-                  fast++;
-              }
-              return slow;
-          }
-}
+            while (fast < nums.length) {
+                if (nums[fast] != val) {
+                    nums[slow] = nums[fast];
+                    slow++;
+                }
+                fast++;
+            }
+            return slow;
+        }
+    }
 //leetcode submit region end(Prohibit modification and deletion)
 
-  }
+}

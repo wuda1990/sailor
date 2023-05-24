@@ -40,6 +40,7 @@ import java.util.LinkedList;
 import java.util.List;
 
 public class Q77Combinations {
+
     //2023-01-15 21:45:21
     //Combinations
     //编号：[77]
@@ -50,28 +51,30 @@ public class Q77Combinations {
 
     //leetcode submit region begin(Prohibit modification and deletion)
     class Solution {
+
         public List<List<Integer>> combine(int n, int k) {
             LinkedList<Integer> list = new LinkedList<>();
             List<List<Integer>> result = new ArrayList<>();
-            dfs(n, k,1, list, result);
+            backTrack(n, k, 1, list, result);
             return result;
         }
 
         /**
          * 已经选择的元素个数：path.size();
-         *
+         * <p>
          * 所需需要的元素个数为: k - path.size();
-         *
-         * 列表中剩余元素（n-i） >= 所需需要的元素个数（k - path.size()）
-         *
+         * <p>
+         * 列表中剩余元素n-i >= 所需需要的元素个数（k - path.size()）
+         * <p>
          * 在集合n中至多要从该起始位置 : i <= n - (k - path.size()) + 1，开始遍历
+         *
          * @param n
          * @param k
          * @param start
          * @param list
          * @param result
          */
-        private void dfs(int n, int k, int start, LinkedList<Integer> list, List<List<Integer>> result) {
+        private void backTrack(int n, int k, int start, LinkedList<Integer> list, List<List<Integer>> result) {
             if (list.size() == k) {
                 List tmp = new ArrayList(list);
                 result.add(tmp);
@@ -79,7 +82,7 @@ public class Q77Combinations {
             }
             for (int i = start; i <= n - (k - list.size()) + 1; i++) {
                 list.offer(i);
-                dfs(n, k, i + 1, list, result);
+                backTrack(n, k, i + 1, list, result);
                 list.pollLast();
             }
         }

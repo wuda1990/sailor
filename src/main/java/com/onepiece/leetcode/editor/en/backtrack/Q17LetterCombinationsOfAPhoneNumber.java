@@ -34,15 +34,21 @@
 // 0 <= digits.length <= 4 
 // digits[i] is a digit in the range ['2', '9']. 
 // 
-// Related Topics Hash Table String Backtracking 
+// Related Topics Hash Table String Backtracking
 // 👍 13804 👎 802
 
 
 package com.onepiece.leetcode.editor.en.backtrack;
 
-import java.util.*;
+import java.util.ArrayDeque;
+import java.util.ArrayList;
+import java.util.Deque;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 public class Q17LetterCombinationsOfAPhoneNumber {
+
     //2023-01-18 23:46:24
     //Letter Combinations of a Phone Number
     //编号：[17]
@@ -53,14 +59,17 @@ public class Q17LetterCombinationsOfAPhoneNumber {
 
     //leetcode submit region begin(Prohibit modification and deletion)
     class Solution {
+
         public List<String> letterCombinationsBackTrack(String digits) {
             List<String> ans = new ArrayList<>();
-            if (digits.length() == 0) return ans;
-            permute(ans, digits, "", 0);
+            if (digits.length() == 0)
+                return ans;
+            backTrack(ans, digits, "", 0);
             return ans;
         }
 
         public final Map<Character, String> telMap = new HashMap<>();
+
         //init
         {
             telMap.put('2', "abc");
@@ -74,13 +83,13 @@ public class Q17LetterCombinationsOfAPhoneNumber {
         }
 
 
-        private void permute(List<String> ans, String digits, String str, int index) {
+        private void backTrack(List<String> ans, String digits, String str, int index) {
             if (index == digits.length()) {
                 ans.add(str);
             } else {
                 String telStr = telMap.get(digits.charAt(index));
                 for (int j = 0; j < telStr.length(); j++) {
-                    permute(ans, digits, str + telStr.charAt(j), index + 1);
+                    backTrack(ans, digits, str + telStr.charAt(j), index + 1);
                 }
 
             }

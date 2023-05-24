@@ -51,13 +51,17 @@ import java.util.LinkedList;
 import java.util.List;
 
 public class Q40CombinationSumIi {
+
     public static void main(String[] args) {
         Solution solution = new Q40CombinationSumIi().new Solution();
+        solution.combinationSum2(new int[]{10, 1, 2, 7, 6, 1, 5}, 8);
     }
 
     //leetcode submit region begin(Prohibit modification and deletion)
     class Solution {
+
         List<List<Integer>> ans = new ArrayList<>();
+
         public List<List<Integer>> combinationSum2(int[] candidates, int target) {
             Arrays.sort(candidates);
             backTrack(candidates, target, 0, new LinkedList<>());

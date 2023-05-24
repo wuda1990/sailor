@@ -45,63 +45,65 @@ import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
 
-public class Q3LongestSubstringWithoutRepeatingCharacters{
- //2022-09-30 09:27:01
+public class Q3LongestSubstringWithoutRepeatingCharacters {
+
+    //2022-09-30 09:27:01
     //Longest Substring Without Repeating Characters
     //编号：[3]
-      public static void main(String[] args) {
-           Solution solution = new Q3LongestSubstringWithoutRepeatingCharacters().new Solution();
+    public static void main(String[] args) {
+        Solution solution = new Q3LongestSubstringWithoutRepeatingCharacters().new Solution();
 //          System.out.println(solution.lengthOfLongestSubstring("abcabcbb"));
 //          System.out.println(solution.lengthOfLongestSubstring("pwwkew"));
-          System.out.println(solution.lengthOfLongestSubstring("abba")); //To clear this scene
-      }
-      //leetcode submit region begin(Prohibit modification and deletion)
-class Solution {
-    public int lengthOfLongestSubstring(String s) {
-        int[] charIndex = new int[256];
-        Arrays.fill(charIndex, -1);
-        int n = s.length();
-        int i = 0;// i means start of the sub string
-        int max = 0;
-        int j = 0;
-        while (i < n && j < n) {
-            int tmp = charIndex[s.charAt(j)];
-            // why to get the max between tmp+1 and i
-            // consider a,b,b,a , repeat character already exist from tmp+1 to j and i is greater than tmp+1
-            // consider c,b,b , tmp+1 is greater than i
-            i = Math.max(tmp + 1, i);// equals to below code segment
-//            if (tmp != -1) {
-//                i = Math.max(tmp + 1, i);
-//            }
-            charIndex[s.charAt(j)] = j;
-            max = Math.max(j - i + 1, max);
-            j++;
-        }
-        return max;
+        System.out.println(solution.lengthOfLongestSubstring("abba")); //To clear this scene
     }
 
-          /**
-           * it is never easy to loop, condition/branch/i,j need to be considered
-           * @param s
-           * @return
-           */
-          public int lengthOfLongestSubstring2(String s) {
-              Map<Character, Integer> map = new HashMap<>();
-              int n = s.length();
-              int i = 0, j = 0;
-              int max = 0;
-              while (i < n && j < n) {
-                  char tmp = s.charAt(j);
-                  if (map.containsKey(tmp)) {
-                      i = Math.max(map.get(tmp) + 1, i);
-                  }
-                  max = Math.max(max, j - i + 1);
-                  map.put(tmp, j);
-                  j++;
-              }
-              return max;
-          }
-}
+    //leetcode submit region begin(Prohibit modification and deletion)
+    class Solution {
+
+        public int lengthOfLongestSubstring(String s) {
+            int[] charIndex = new int[256];
+            Arrays.fill(charIndex, -1);
+            int n = s.length();
+            int i = 0;// i means start of the sub string
+            int max = 0;
+            int j = 0;
+            while (i < n && j < n) {
+                int tmp = charIndex[s.charAt(j)];
+                // why to get the max between tmp+1 and i
+                // consider a,b,b,a , when iterate to second b, b's repeat character is 1, greater than start a's index 0
+                if (tmp != -1) {
+                    i = Math.max(tmp + 1, i);
+                }
+                charIndex[s.charAt(j)] = j;
+                max = Math.max(j - i + 1, max);
+                j++;
+            }
+            return max;
+        }
+
+        /**
+         * it is never easy to loop, condition/branch/i,j need to be considered
+         *
+         * @param s
+         * @return
+         */
+        public int lengthOfLongestSubstring2(String s) {
+            Map<Character, Integer> map = new HashMap<>();
+            int n = s.length();
+            int i = 0, j = 0;
+            int max = 0;
+            while (i < n && j < n) {
+                char tmp = s.charAt(j);
+                if (map.containsKey(tmp)) {
+                    i = Math.max(map.get(tmp) + 1, i);
+                }
+                max = Math.max(max, j - i + 1);
+                map.put(tmp, j);
+                j++;
+            }
+            return max;
+        }
+    }
 //leetcode submit region end(Prohibit modification and deletion)
 
-  }
+}

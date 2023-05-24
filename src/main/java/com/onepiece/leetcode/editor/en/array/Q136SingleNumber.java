@@ -37,6 +37,7 @@ public class Q136SingleNumber {
     //编号：[136]
     public static void main(String[] args) {
         Solution solution = new Q136SingleNumber().new Solution();
+        System.out.println(solution.singleNumber(new int[]{4, 1, 2, 1, 2}));
     }
 
     //leetcode submit region begin(Prohibit modification and deletion)

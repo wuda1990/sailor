@@ -52,6 +52,7 @@ import java.util.Arrays;
 import java.util.List;
 
 public class Q15ThreeSum {
+
     //2023-03-12 14:43:49
     //3Sum
     //编号：[15]
@@ -65,11 +66,13 @@ public class Q15ThreeSum {
 
     //leetcode submit region begin(Prohibit modification and deletion)
     class Solution {
+
         public List<List<Integer>> threeSum(int[] nums) {
             List<List<Integer>> result = new ArrayList<>();
             Arrays.sort(nums);
             int len = nums.length;
 
+            // use two pointer iterator to reduce iterate count
             for (int i = 0; i < len; i++) {
                 if (nums[i] > 0) {
                     return result;
