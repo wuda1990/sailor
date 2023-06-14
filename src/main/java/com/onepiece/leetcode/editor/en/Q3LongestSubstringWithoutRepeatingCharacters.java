@@ -70,7 +70,7 @@ public class Q3LongestSubstringWithoutRepeatingCharacters {
             while (i < n && j < n) {
                 int tmp = charIndex[s.charAt(j)];
                 // why to get the max between tmp+1 and i
-                // consider a,b,b,a , when iterate to second b, b's repeat character is 1, greater than start a's index 0
+                // consider a,b,b,a , when iterate to second b, first b's index is 1, greater than start a's index 0
                 if (tmp != -1) {
                     i = Math.max(tmp + 1, i);
                 }
