@@ -1,30 +1,38 @@
 package com.onepiece.algorithm;
 
-public class InterruptTest extends Thread{
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
-    boolean  stop=false;
-    public static void main( String args[] ) throws Exception {
+public class InterruptTest extends Thread {
+
+    Logger log = LoggerFactory.getLogger(this.getClass().getName());
+
+    boolean stop = false;
+
+    public static void main(String args[]) throws Exception {
         InterruptTest thread = new InterruptTest();
         thread.start();
         Thread.sleep(1000);
         thread.interrupt();
 
     }
+
     public void run() {
-        System.out.println("-------sleeping");
+        log.info("-------sleeping");
         try {
             Thread.sleep(2000);
         } catch (InterruptedException e) {
-            System.out.println(Thread.currentThread().isInterrupted());
-            System.out.println(Thread.currentThread().isInterrupted());
-            e.printStackTrace();
+            log.info("status:{}", Thread.currentThread().interrupted());
+            log.info("status:{}", Thread.currentThread().interrupted());
+            log.error("interrupted", e);
         }
-        System.out.println("-------caclulating");
+        log.info("-------caclulating");
         double d = 0;
-        for(int i=1; i<2500000; i++){
-            d += Math.E/d;
+        for (int i = 1; i < 2500000; i++) {
+            d += Math.E / d;
+//            System.out.println("1");
         }
-        System.out.println("-------finish caclulating");
+        log.info("-------finish caclulating");
 
     }
 }
