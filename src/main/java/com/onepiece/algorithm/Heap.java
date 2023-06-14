@@ -3,8 +3,7 @@ package com.onepiece.algorithm;
 import java.util.Arrays;
 
 /**
- * 默认实现最小堆
- * add,remove,top
+ * 默认实现最小堆 add,remove,top
  */
 public class Heap {
 
@@ -14,7 +13,7 @@ public class Heap {
 
     public static final int defaultCapacity = 16;
 
-    public Heap(int capacity){
+    public Heap(int capacity) {
         heap = new int[capacity];
     }
 
@@ -57,6 +56,7 @@ public class Heap {
     }
 
     public void remove() {
+        //remove the minimum data heap[0]
         heap[0] = heap[size - 1];
         heap[size - 1] = 0;
         size--;

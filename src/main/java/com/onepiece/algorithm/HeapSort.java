@@ -1,6 +1,7 @@
 package com.onepiece.algorithm;
 
 class HeapSort {
+
     public int findKthLargest(int[] nums, int k) {
         int heapSize = nums.length;
         buildMaxHeap(nums, heapSize);
@@ -36,5 +37,11 @@ class HeapSort {
         int temp = a[i];
         a[i] = a[j];
         a[j] = temp;
+    }
+
+    public static void main(String[] args) {
+        HeapSort heapSort = new HeapSort();
+        int kthLargest = heapSort.findKthLargest(new int[]{3, 7, 87, 66, 5, 22}, 3);
+        System.out.println(kthLargest);
     }
 }
