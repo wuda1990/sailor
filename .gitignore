@@ -4,3 +4,4 @@
 *.class
 /target/classes/META-INF/sailor.kotlin_module
 /src/main/java/com/onepiece/leetcode/editor/en/all.json
+/target/classes/
