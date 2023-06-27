@@ -38,7 +38,8 @@
 //
 // Related Topics Hash Table String Sliding Window 👍 28879 👎 1229
 
-
+//Notice: 处理连续问题可以用滑动窗口,如子串,子数组
+//Sliding window can be used when consecutive problem is encountered, such as subString, subarray
 package com.onepiece.leetcode.editor.en;
 
 import java.util.Arrays;
