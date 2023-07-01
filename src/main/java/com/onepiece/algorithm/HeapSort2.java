@@ -83,7 +83,7 @@ public class HeapSort2 {
         for (int i = 0; i < k - 1; i++) {
             //第0个元素最大，交换到尾部，类似选择排序
             swap(0, lastIndex - i);
-            maxHeapify(0, lastIndex - 1 - i);
+            maxHeapify(0, lastIndex - i - 1);
         }
         return arr[0];
     }
