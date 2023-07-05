@@ -40,27 +40,39 @@
 
 package com.onepiece.leetcode.editor.en;
 
-import java.util.*;
+import java.util.ArrayDeque;
+import java.util.ArrayList;
+import java.util.Deque;
+import java.util.HashMap;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.Map;
 
 public class Q17LetterCombinationsOfAPhoneNumber {
+
     //2023-01-18 23:46:24
     //Letter Combinations of a Phone Number
     //编号：[17]
     public static void main(String[] args) {
         Solution solution = new Q17LetterCombinationsOfAPhoneNumber().new Solution();
-        solution.letterCombinations("23");
+        System.out.println(solution.letterCombinations0("237"));
+        System.out.println(solution.letterCombinations("237"));
     }
 
     //leetcode submit region begin(Prohibit modification and deletion)
     class Solution {
+
         public List<String> letterCombinationsBackTrack(String digits) {
             List<String> ans = new ArrayList<>();
-            if (digits.length() == 0) return ans;
+            if (digits.length() == 0) {
+                return ans;
+            }
             permute(ans, digits, "", 0);
             return ans;
         }
 
         public final Map<Character, String> telMap = new HashMap<>();
+
         //init
         {
             telMap.put('2', "abc");
@@ -87,7 +99,7 @@ public class Q17LetterCombinationsOfAPhoneNumber {
         }
 
         //traverse by bfs
-        public List<String> letterCombinations(String digits) {
+        public List<String> letterCombinations0(String digits) {
             List<String> ans = new ArrayList<>();
             if (digits.length() == 0) {
                 return ans;
@@ -112,6 +124,39 @@ public class Q17LetterCombinationsOfAPhoneNumber {
             }
 
             return ans;
+        }
+
+        public List<String> letterCombinations(String digits) {
+            List<String> ans = new ArrayList<>();
+            if (digits.length() == 0) {
+                return ans;
+            }
+            Deque<String> deque = new LinkedList<>();
+            int i = 0;
+            char[] branches = getDigitsAt(digits, i++);
+            for (char c : branches) {
+                deque.offer(String.valueOf(c));
+            }
+            while (!deque.isEmpty()) {
+                int size = deque.size();
+                //tree's level increment by one
+                branches = getDigitsAt(digits, i++);
+                for (int j = 0; j < size; j++) {
+                    final String str = deque.poll();
+                    for (char c : branches) {
+                        if (i < digits.length()) {
+                            deque.offer(str + c);
+                        } else {
+                            ans.add(str + c);
+                        }
+                    }
+                }
+            }
+            return ans;
+        }
+
+        private char[] getDigitsAt(String input, int i) {
+            return telMap.getOrDefault(input.charAt(i), "").toCharArray();
         }
     }
 //leetcode submit region end(Prohibit modification and deletion)
