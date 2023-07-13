@@ -38,6 +38,7 @@ import java.util.LinkedList;
 import java.util.List;
 
 public class Q47PermutationsIi {
+
     public static void main(String[] args) {
         Solution solution = new Q47PermutationsIi().new Solution();
     }
@@ -58,7 +59,7 @@ public class Q47PermutationsIi {
             if (path.size() == nums.length) {
                 ans.add(new ArrayList<>(path));
             }
-            //breadthwise used array
+            //breadth used array
             boolean[] brUsed = new boolean[21];
             for (int i = 0; i < nums.length; i++) {
                 if (used[i] || brUsed[nums[i] + 10]) {
