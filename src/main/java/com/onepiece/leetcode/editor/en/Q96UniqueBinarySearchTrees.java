@@ -48,7 +48,7 @@ public class Q96UniqueBinarySearchTrees {
             //透过二叉树表面，找到状态转移方程,dp[i]表示i个节点下二叉搜索树的个数
             for (int i = 1; i <= n; i++) {
                 for (int j = 0; j < i; j++) { // j表示左子树的节点数
-                    dp[i] += dp[j] * dp[i - j - 1];
+                    dp[i] += dp[j] * dp[i - 1 - j];
                 }
             }
             return dp[n];
