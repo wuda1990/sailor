@@ -1,5 +1,4 @@
 /.idea/
-*.md
 /src/main/java/com/onepiece/leetcode/editor/en/doc/*
 *.class
 /target/classes/META-INF/sailor.kotlin_module
