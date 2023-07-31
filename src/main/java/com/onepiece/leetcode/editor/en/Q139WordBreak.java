@@ -63,7 +63,7 @@ public class Q139WordBreak {
     class Solution {
 
         public boolean wordBreak(String s, List<String> wordDict) {
-            return wordBreakBagFirst2(s, wordDict);
+            return wordBreakBagFirst(s, wordDict);
         }
 
         public boolean wordBreakBagFirst(String s, List<String> wordDict) {
