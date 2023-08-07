@@ -1,8 +1,8 @@
-package com.onepiece;
+package com.onepiece.niuke;
 
 import java.util.Scanner;
 
-public class Main3 {
+public class HexParser {
     public static void main(String[] args) {
         Scanner in = new Scanner(System.in);
 

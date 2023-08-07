@@ -12,6 +12,8 @@
 //
 // 
 //Input: nums = [2,0,2,1,1,0]
+//1: 0,0,2,1,1,2,
+//2: 0,0,1,1,2,2
 //Output: [0,0,1,1,2,2]
 // 
 //
@@ -58,6 +60,7 @@ public class Q75SortColors {
         public void sortColors(int[] nums) {
             int l = 0, r = nums.length - 1;
             // nums on the left of l eq 0, nums on the right of r eq 2.
+            // double pointer, l denotes the first number that is not 0 form left, r denotes the first number that is not 2 from right
             for (int k = l; k <= r; ) {
                 if (nums[k] == 0) {
                     swap(nums, k++, l++);
