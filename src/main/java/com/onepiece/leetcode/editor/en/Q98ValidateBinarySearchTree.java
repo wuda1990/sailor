@@ -38,62 +38,53 @@
 // 👍 13586 👎 1109
 
 
-  package com.onepiece.leetcode.editor.en;
+package com.onepiece.leetcode.editor.en;
 
 import com.onepiece.leetcode.editor.TreeNode;
 
-import java.util.LinkedList;
-import java.util.Stack;
+public class Q98ValidateBinarySearchTree {
 
-public class Q98ValidateBinarySearchTree{
- //2023-01-14 19:06:35
+    //2023-01-14 19:06:35
     //Validate Binary Search Tree
     //编号：[98]
-      public static void main(String[] args) {
-           Solution solution = new Q98ValidateBinarySearchTree().new Solution();
+    public static void main(String[] args) {
+        Solution solution = new Q98ValidateBinarySearchTree().new Solution();
 //          TreeNode root = TreeNode.build(new String[]{"5", "4", "6", "null", "null", "3", "7"});
 //          TreeNode root = TreeNode.build(new String[]{"2", "2", "2"});
-          TreeNode root = TreeNode.build(new String[]{"2147483647"});
-          boolean validBST = solution.isValidBST(root);
-          System.out.println(validBST);
-      }
-      //leetcode submit region begin(Prohibit modification and deletion)
-/**
- * Definition for a binary tree node.
- * public class TreeNode {
- *     int val;
- *     TreeNode left;
- *     TreeNode right;
- *     TreeNode() {}
- *     TreeNode(int val) { this.val = val; }
- *     TreeNode(int val, TreeNode left, TreeNode right) {
- *         this.val = val;
- *         this.left = left;
- *         this.right = right;
- *     }
- * }
- */
-class Solution {
-    public boolean isValidBST(TreeNode root) {
-        return isValid(root, Long.MIN_VALUE, Long.MAX_VALUE);
+        TreeNode root = TreeNode.build(new String[]{"2147483647"});
+        boolean validBST = solution.isValidBST(root);
+        System.out.println(validBST);
     }
+    //leetcode submit region begin(Prohibit modification and deletion)
 
-    private boolean isValid(TreeNode root, long min, long max) {
-        if (root == null) {
+    /**
+     * Definition for a binary tree node. public class TreeNode { int val; TreeNode left; TreeNode right; TreeNode() {}
+     * TreeNode(int val) { this.val = val; } TreeNode(int val, TreeNode left, TreeNode right) { this.val = val;
+     * this.left = left; this.right = right; } }
+     */
+    class Solution {
+
+        public boolean isValidBST(TreeNode root) {
+            return isValid(root, Long.MIN_VALUE, Long.MAX_VALUE);
+        }
+
+        private boolean isValid(TreeNode root, long min, long max) {
+            if (root == null) {
+                return true;
+            }
+            if (root.val <= min || root.val >= max) {
+                return false;
+            }
+            //transit min and max to next level
+            if (!isValid(root.left, min, root.val)) {
+                return false;
+            }
+            if (!isValid(root.right, root.val, max)) {
+                return false;
+            }
             return true;
         }
-        if (root.val <= min || root.val >= max) {
-            return false;
-        }
-        if (!isValid(root.left, min, root.val)) {
-            return false;
-        }
-        if (!isValid(root.right, root.val, max)) {
-            return false;
-        }
-        return true;
     }
-}
 //leetcode submit region end(Prohibit modification and deletion)
 
-  }
+}

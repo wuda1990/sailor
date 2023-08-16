@@ -101,7 +101,7 @@ public class Q239SlidingWindowMaximum {
             }
             res[num++] = myQueue.peek();
             for (int i = k; i < nums.length; i++) {
-                //滑动窗口移除最前面的元素，移除是判断该元素是否放入队列
+                //滑动窗口移除最前面的元素，移除时判断该元素是否放入队列
                 myQueue.poll(nums[i - k]);
                 //滑动窗口加入最后面的元素
                 myQueue.add(nums[i]);
@@ -123,9 +123,11 @@ public class Q239SlidingWindowMaximum {
             }
             result[num++] = queue.peekFirst();
             for (int i = k; i < nums.length; i++) {
+                //如果队列中最大值等于滑动窗口最左边的值，则弹出
                 if (!queue.isEmpty() && queue.peekFirst() == nums[i - k]) {
                     queue.pollFirst();
                 }
+                //如果队列中最大值小于滑动窗口最右边的值，则弹出
                 while (!queue.isEmpty() && queue.peekLast() < nums[i]) {
                     queue.pollLast();
                 }

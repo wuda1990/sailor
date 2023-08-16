@@ -68,12 +68,12 @@ public class Q94BinaryTreeInorderTraversal {
             List<Integer> ans = new ArrayList<>();
             Stack<TreeNode> stack = new Stack<>();
             TreeNode p = root;
+            //more concise
             while (!stack.isEmpty() || p != null) {
-                while (p != null) {
+                if (p != null) {
                     stack.push(p);
                     p = p.left;
-                }
-                if (!stack.isEmpty()) {
+                } else {
                     //pop
                     TreeNode pop = stack.pop();
                     ans.add(pop.val);
