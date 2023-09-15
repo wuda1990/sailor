@@ -1,14 +1,25 @@
 package com.onepiece.leetcode.editor;
 
 public class ListNode {
+
     public int val;
     public ListNode next;
-    public ListNode() {}
-    public ListNode(int val) { this.val = val; }
-    public ListNode(int val, ListNode next) { this.val = val; this.next = next; }
+
+    public ListNode() {
+    }
+
+    public ListNode(int val) {
+        this.val = val;
+    }
+
+    public ListNode(int val, ListNode next) {
+        this.val = val;
+        this.next = next;
+    }
 
     /**
      * 传入数组，初始化链表
+     *
      * @param arr
      */
     public static ListNode initialList(int[] arr) {
@@ -21,5 +32,10 @@ public class ListNode {
         }
         p.next = null;
         return dummy.next;
+    }
+
+    //print the list
+    public void print() {
+
     }
 }

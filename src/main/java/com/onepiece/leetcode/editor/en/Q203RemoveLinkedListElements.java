@@ -35,65 +35,44 @@
 // 👍 6871 👎 203
 
 
-  package com.onepiece.leetcode.editor.en;
+package com.onepiece.leetcode.editor.en;
 
 import com.onepiece.leetcode.editor.ListNode;
 
-public class Q203RemoveLinkedListElements{
- //2023-03-08 22:03:36
+public class Q203RemoveLinkedListElements {
+
+    //2023-03-08 22:03:36
     //Remove Linked List Elements
     //编号：[203]
-      public static void main(String[] args) {
-           Solution solution = new Q203RemoveLinkedListElements().new Solution();
-          ListNode head = new ListNode(1, new ListNode(2,
-                  new ListNode(6, new ListNode(3, new ListNode(4, new ListNode(5, new ListNode(6)))))));
-          solution.removeElements(head, 6);
-      }
-      //leetcode submit region begin(Prohibit modification and deletion)
-/**
- * Definition for singly-linked list.
- * public class ListNode {
- *     int val;
- *     ListNode next;
- *     ListNode() {}
- *     ListNode(int val) { this.val = val; }
- *     ListNode(int val, ListNode next) { this.val = val; this.next = next; }
- * }
- */
-class Solution {
-    /**
-     * 链表操作画图搞清楚指针的走向，防止空指针
-     * @param head
-     * @param val
-     * @return
-     */
-    public ListNode removeElements1(ListNode head, int val) {
-        ListNode dummy = new ListNode();
-        dummy.next = head;
-        ListNode pre = dummy;
-        while (pre != null) {
-            while (pre.next != null && pre.next.val == val) {
-                pre.next = pre.next.next;
-            }
-            pre = pre.next;
-        }
-        return dummy.next;
+    public static void main(String[] args) {
+        Solution solution = new Q203RemoveLinkedListElements().new Solution();
+        ListNode head = new ListNode(1, new ListNode(2,
+            new ListNode(6, new ListNode(3, new ListNode(4, new ListNode(5, new ListNode(6)))))));
+        solution.removeElements(head, 6);
     }
+    //leetcode submit region begin(Prohibit modification and deletion)
 
-    public ListNode removeElements(ListNode head, int val) {
-        ListNode dummy = new ListNode();
-        dummy.next = head;
-        ListNode pre = dummy;
-        while (pre.next != null) {
-            if (pre.next.val == val) {
-                pre.next = pre.next.next;
-            }else {
-                pre = pre.next;
+    /**
+     * Definition for singly-linked list. public class ListNode { int val; ListNode next; ListNode() {} ListNode(int
+     * val) { this.val = val; } ListNode(int val, ListNode next) { this.val = val; this.next = next; } }
+     */
+    class Solution {
+
+        public ListNode removeElements(ListNode head, int val) {
+            ListNode dummy = new ListNode();
+            dummy.next = head;
+            ListNode pre = dummy;
+            while (pre.next != null) {
+                if (pre.next.val == val) {
+                    //adopt the next pointer to skip the node
+                    pre.next = pre.next.next;
+                } else {
+                    pre = pre.next;
+                }
             }
+            return dummy.next;
         }
-        return dummy.next;
     }
-}
 //leetcode submit region end(Prohibit modification and deletion)
 
-  }
+}
