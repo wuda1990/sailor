@@ -166,6 +166,11 @@ public class Q151ReverseWordsInAString {
                         chars[slow++] = chars[fast++];
                     }
                 }
+                //Todo make the code concise
+                //code above can be more concise
+//                if (chars[fast] != val || (slow > 0 && chars[slow - 1] != val)) {
+//                    chars[slow++] = chars[fast];
+//                }
             }
             return slow;
         }

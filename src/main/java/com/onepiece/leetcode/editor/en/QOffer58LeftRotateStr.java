@@ -1,11 +1,13 @@
-package com.onepiece.leetcode.editor.en.string;
+package com.onepiece.leetcode.editor.en;
 
 public class QOffer58LeftRotateStr {
 
     public static void main(String[] args) {
-        QOffer58LeftRotateStr.Solution solution = new QOffer58LeftRotateStr().new Solution();
+        Solution solution = new QOffer58LeftRotateStr().new Solution();
         System.out.println(solution.reverseLeftWords("abcdefg", 2));
     }
+
+    //abcdefg,2->bcdefga,1->cdefgab
 
     class Solution {
 
@@ -13,6 +15,13 @@ public class QOffer58LeftRotateStr {
             return reverseLeftWordsUsingRotate(s, n);
         }
 
+        /**
+         * s is abcdefg, n is 2 1. reverse ab, get ba 2. reverse cdefg, get gfedc 3. reverse bagfedc, get cdefgab
+         *
+         * @param s
+         * @param n
+         * @return
+         */
         public String reverseLeftWordsUsingReverse(String s, int n) {
             int len = s.length();
             StringBuilder sb = new StringBuilder(s);
