@@ -8,7 +8,8 @@
 //Input: s = "abab"
 //Output: true
 //Explanation: It is the substring "ab" twice.
-// abababab
+// abab,abab
+//aba,aba
 //
 // Example 2: 
 //

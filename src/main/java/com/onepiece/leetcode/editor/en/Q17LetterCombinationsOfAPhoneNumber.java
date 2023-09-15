@@ -67,7 +67,7 @@ public class Q17LetterCombinationsOfAPhoneNumber {
             if (digits.length() == 0) {
                 return ans;
             }
-            permute(ans, digits, "", 0);
+            backTrack(ans, digits, "", 0);
             return ans;
         }
 
@@ -86,13 +86,13 @@ public class Q17LetterCombinationsOfAPhoneNumber {
         }
 
 
-        private void permute(List<String> ans, String digits, String str, int index) {
+        private void backTrack(List<String> ans, String digits, String str, int index) {
             if (index == digits.length()) {
                 ans.add(str);
             } else {
                 String telStr = telMap.get(digits.charAt(index));
                 for (int j = 0; j < telStr.length(); j++) {
-                    permute(ans, digits, str + telStr.charAt(j), index + 1);
+                    backTrack(ans, digits, str + telStr.charAt(j), index + 1);
                 }
 
             }
