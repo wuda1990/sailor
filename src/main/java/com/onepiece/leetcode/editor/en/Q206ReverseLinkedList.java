@@ -51,6 +51,7 @@ public class Q206ReverseLinkedList {
         Solution solution = new Q206ReverseLinkedList().new Solution();
         final ListNode listNode = ListNode.initialList(new int[]{1, 2, 3});
         final ListNode result = solution.reverseListRecursively(listNode);
+        result.print();
     }
     //leetcode submit region begin(Prohibit modification and deletion)
 
@@ -74,11 +75,11 @@ public class Q206ReverseLinkedList {
         }
 
         //iterator
-        public ListNode reverse(ListNode head) {
-            ListNode dummy = new ListNode(0, head);
+        public ListNode reverseList(ListNode head) {
             ListNode pre = null;
-            ListNode p = dummy;
-            while (p.next != null) {
+            ListNode p = head;
+            //check if p is null, not p.next is null, because we need to reverse the last node
+            while (p != null) {
                 ListNode next = p.next;
                 p.next = pre;
                 pre = p;
