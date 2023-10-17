@@ -3,6 +3,7 @@ package com.onepiece.niuke;
 import java.util.Scanner;
 
 public class HexParser {
+
     public static void main(String[] args) {
         Scanner in = new Scanner(System.in);
 
@@ -17,13 +18,16 @@ public class HexParser {
     private static void parse(String input) {
         int result = 0;
         int position = 1;
-        for (int i = input.length() - 1; i > 1; i--) {
+        for (int i = input.length() - 1; i >= 0; i--) {
             char c = input.charAt(i);
             if (c >= '1' && c <= '9') {
                 result += position * (c - '1' + 1);
             }
             if (c >= 'A' && c <= 'F') {
                 result += position * (c - 'A' + 10);
+            }
+            if (c >= 'a' && c <= 'f') {
+                result += position * (c - 'a' + 10);
             }
             position = position * 16;
         }

@@ -55,44 +55,49 @@ package com.onepiece.leetcode.editor.en;
 
 import com.onepiece.leetcode.editor.ListNode;
 
-public class Q142LinkedListCycleIi{
- //2022-10-03 22:45:49
+public class Q142LinkedListCycleIi {
+
+    //2022-10-03 22:45:49
     //Linked List Cycle II
     //编号：[142]
-      public static void main(String[] args) {
-           Solution solution = new Q142LinkedListCycleIi().new Solution();
+    public static void main(String[] args) {
+        Solution solution = new Q142LinkedListCycleIi().new Solution();
 
-      }
-      //leetcode submit region begin(Prohibit modification and deletion)
-/**
- * Definition for singly-linked list.
- * class ListNode {
- *     int val;
- *     ListNode next;
- *     ListNode(int x) {
- *         val = x;
- *         next = null;
- *     }
- * }
- */
-public class Solution {
-    public ListNode detectCycle(ListNode head) {
-        ListNode start, slow = head, fast = head;
-        while ( fast != null && fast.next != null) {
-            slow = slow.next;
-            fast = fast.next.next;
-            if (slow == fast) {
-                start = head;
-                while (start != slow) {
-                    start = start.next;
-                    slow = slow.next;
-                }
-                return start;
-            }
-        }
-        return null;
     }
-}
+    //leetcode submit region begin(Prohibit modification and deletion)
+
+    /**
+     * Definition for singly-linked list. class ListNode { int val; ListNode next; ListNode(int x) { val = x; next =
+     * null; } }
+     */
+    public class Solution {
+
+        /**
+         * how is the solution working? m denotes the distance from head to the start of cycle n denotes the distance
+         * from the start of cycle to the meeting point l denotes the length of the cycle 2(m + n) = m + n + kl => m +
+         * n= kl => m = kl - n => m = (k - 1)l + (l - n) so when slow and fast meet, if we set another pointer start
+         * from head, and move it with slow pointer together, they will meet at the start of cycle
+         *
+         * @param head
+         * @return
+         */
+        public ListNode detectCycle(ListNode head) {
+            ListNode start, slow = head, fast = head;
+            while (fast != null && fast.next != null) {
+                slow = slow.next;
+                fast = fast.next.next;
+                if (slow == fast) {
+                    start = head;
+                    while (start != slow) {
+                        start = start.next;
+                        slow = slow.next;
+                    }
+                    return start;
+                }
+            }
+            return null;
+        }
+    }
 //leetcode submit region end(Prohibit modification and deletion)
 
-  }
+}

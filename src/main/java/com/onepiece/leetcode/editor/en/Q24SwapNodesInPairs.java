@@ -62,9 +62,9 @@ public class Q24SwapNodesInPairs {
             while (slow != null && slow.next != null) {
                 ListNode fast = slow.next;
                 ListNode next = fast.next;
+                pre.next = fast;
                 fast.next = slow;
                 slow.next = next;
-                pre.next = fast;
                 pre = slow;
                 slow = next;
             }

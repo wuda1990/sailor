@@ -45,6 +45,7 @@
 package com.onepiece.leetcode.editor.en;
 
 public class Q322CoinChange {
+
     public static void main(String[] args) {
         Solution solution = new Q322CoinChange().new Solution();
 //        solution.coinChange(new int[]{1, 2, 5}, 11);
@@ -54,9 +55,10 @@ public class Q322CoinChange {
     //leetcode submit region begin(Prohibit modification and deletion)
 
     /**
-     * 求组合，完全背包，凑满金额的硬币最小个数
+     * 求组合，先遍历物品再遍历背包 dp[i][j]表示前i个物品，背包容量为j时的最大价值 完全背包问题，每个物品可以无限使用
      */
     class Solution {
+
         public int coinChange(int[] coins, int amount) {
             int[] dp = new int[amount + 1];
             dp[0] = 0;
@@ -64,6 +66,9 @@ public class Q322CoinChange {
                 dp[i] = Integer.MAX_VALUE;
             }
             for (int i = 0; i < coins.length; i++) {
+                //j从coins[i]开始，因为小于coins[i]的情况在初始化时已经处理了
+                //正序遍历，完全背包问题，每个物品可以无限使用
+                //如果是0/1背包问题，每个物品只能使用一次，那么j应该从amount开始逆序遍历
                 for (int j = coins[i]; j <= amount; j++) {
                     if (dp[j - coins[i]] != Integer.MAX_VALUE) {
                         dp[j] = Math.min(dp[j], dp[j - coins[i]] + 1);
