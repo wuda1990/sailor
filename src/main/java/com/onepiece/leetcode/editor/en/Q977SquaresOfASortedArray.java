@@ -47,43 +47,6 @@ public class Q977SquaresOfASortedArray {
 
     //leetcode submit region begin(Prohibit modification and deletion)
     class Solution {
-        public int[] sortedSquares1(int[] nums) {
-            int len = nums.length;
-            //calculate the mid is pivotal, it is the position which the value is greater than 0
-            int mid = nums[0] >= 0 ? 0 : len - 1;
-            // if mid>0, then loop to find the index which value is greater than 0
-            for (int i = 1; i < len; i++) {
-                if (nums[i] >= 0) {
-                    mid = i;
-                    break;
-                }
-            }
-            int l, r;
-            if (nums[mid] > 0) {
-                l = mid - 1;
-                r = mid;
-            } else {
-                l = mid;
-                r = mid + 1;
-            }
-            int i = 0;
-            int[] result = new int[len];
-            while (l >= 0 && r < len) {
-                if (Math.abs(nums[l]) > Math.abs(nums[r])) {
-                    result[i++] = sqrt(nums[r++]);
-                } else {
-                    result[i++] = sqrt(nums[l--]);
-                }
-            }
-            while (l >= 0) {
-                result[i++] = sqrt(nums[l--]);
-            }
-            while (r < len) {
-                result[i++] = sqrt(nums[r++]);
-            }
-            return result;
-        }
-
         int sqrt(int a) {
             return a * a;
         }

@@ -21,6 +21,8 @@
 //
 // 
 //Input: nums = [2,0,1]
+//1，0，2
+//0，1，2
 //Output: [0,1,2]
 // 
 //
@@ -42,6 +44,9 @@
 
 package com.onepiece.leetcode.editor.en;
 
+import java.util.Arrays;
+import java.util.Scanner;
+
 public class Q75SortColors {
 
     //2022-10-04 22:14:33
@@ -49,15 +54,21 @@ public class Q75SortColors {
     //编号：[75]
     public static void main(String[] args) {
         Solution solution = new Q75SortColors().new Solution();
-        solution.sortColors(new int[]{2, 0, 2, 1, 1, 0});
-        solution.swap(new int[]{1, 2, 3}, 0, 2);
+        Scanner scanner = new Scanner(System.in);
+        while (scanner.hasNextLine()) {
+            final String line = scanner.nextLine();
+            //spit the line and convert to int array
+            int[] nums = Arrays.stream(line.split("[,|\\s]+")).mapToInt(Integer::parseInt).toArray();
+            solution.sortColors(nums);
+            System.out.println(Arrays.toString(nums));
+        }
     }
 
     //leetcode submit region begin(Prohibit modification and deletion)
     class Solution {
 
         // only 0,1,2 exists in array, so set 1 as pivotal number, then all 0 on the left , all 2 on the right
-        public void sortColors(int[] nums) {
+        public void sortColors0(int[] nums) {
             int l = 0, r = nums.length - 1;
             // nums on the left of l eq 0, nums on the right of r eq 2.
             // double pointer, l denotes the first number that is not 0 form left, r denotes the first number that is not 2 from right
@@ -68,6 +79,31 @@ public class Q75SortColors {
                     swap(nums, k, r--);
                 } else {
                     k++;
+                }
+            }
+        }
+
+        // solution 2: use two pointers, left and right, left denotes the first number that is not 0 from left, right denotes the first number that is not 2 from right
+        public void sortColors(int[] nums) {
+            //Todo Logic is not correct, need to fix
+            int l = 0, r = nums.length - 1;
+            // nums on the left of l eq 0, nums on the right of r eq 2.
+            // double pointer, l denotes the first number that is not 0 form left, r denotes the first number that is not 2 from right
+            while (l < r) {
+                // find the first number that is not 0 from left
+                while (l < r && nums[l] == 0) {
+                    l++;
+                }
+                // find the first number that is not 2 from right
+                while (l < r && nums[r] == 2) {
+                    r--;
+                }
+                //if the num[l]==num[r]==1, then l++, r--, otherwise swap
+                if(nums[l] == 1 && nums[r] == 1) {
+                    l++;
+                    r--;
+                } else {
+                    swap(nums, l, r);
                 }
             }
         }

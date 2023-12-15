@@ -42,33 +42,6 @@ public class Q215KthLargestElementInAnArray {
 
     //leetcode submit region begin(Prohibit modification and deletion)
     class Solution {
-        public int findKthLargest0(int[] nums, int k) {
-            return findKthLargest(nums, 0, nums.length - 1, k);
-        }
-
-        /**
-         * divide and conquer
-         *
-         * @param nums
-         * @param l
-         * @param r
-         * @param k
-         * @return
-         */
-        private int findKthLargest(int[] nums, int l, int r, int k) {
-            int index = partition(nums, l, r);
-
-            //the numbers to the right of index
-            int count = r - index + 1;
-            if (count == k) {
-                return nums[index];
-            } else if (count > k) {
-                return findKthLargest(nums, index + 1, r, k);
-            } else {
-                //左半部分都是比nums[index]小的数，不包含右半部分的数，所以k要去掉count
-                return findKthLargest(nums, l, index - 1, k - count);
-            }
-        }
 
         /**
          * Two pointer,binary search
@@ -84,9 +57,9 @@ public class Q215KthLargestElementInAnArray {
                 int pivotal = partition(nums, l, r);
                 if (pivotal == kth) {
                     return nums[pivotal];
-                } else if (pivotal < kth) {
+                } else if (pivotal < kth) {//kth is on the right side of pivotal
                     l = pivotal + 1;
-                } else {
+                } else {//kth is on the left side of pivotal
                     r = pivotal - 1;
                 }
             }

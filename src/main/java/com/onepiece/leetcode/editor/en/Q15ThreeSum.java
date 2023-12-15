@@ -61,9 +61,9 @@ public class Q15ThreeSum {
         Scanner scanner = new Scanner(System.in);
         while (scanner.hasNextLine()) {
             final String line = scanner.nextLine();
-            //spit the line with coma and convert to int array
-            int[] nums = Arrays.stream(line.split(",")).mapToInt(Integer::parseInt).toArray();
-            solution.threeSum(nums);
+            //spit the line and convert to int array
+            int[] nums = Arrays.stream(line.split("\\s|,")).mapToInt(Integer::parseInt).toArray();
+            System.out.println(solution.threeSum(nums));
         }
 //          solution.threeSum(new int[]{-1, 0, 1, 2, -1, -4});
 //          solution.threeSum(new int[]{0, 0, 0});

@@ -45,8 +45,10 @@ public class Q59SpiralMatrixIi {
             int i = 0, j = 0;
             int di = 0;
             int dj = 1;
+
             while (k <= n * n) {
                 res[i][j] = k++;
+                //check if the next step is valid in the range [0, n)
                 if (i + di < 0 || j + dj < 0 || res[(i + di) % n][(j + dj) % n] != 0) {
                     int tmp = di;
                     di = dj;
