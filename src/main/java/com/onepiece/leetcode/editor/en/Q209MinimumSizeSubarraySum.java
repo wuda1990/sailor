@@ -43,6 +43,7 @@
 
 
 package com.onepiece.leetcode.editor.en;
+//Note: It is stupid to use two pointers to solve this problem. If I have O(n) solution, I will not try O(nlogn) solution.
 
 public class Q209MinimumSizeSubarraySum {
 

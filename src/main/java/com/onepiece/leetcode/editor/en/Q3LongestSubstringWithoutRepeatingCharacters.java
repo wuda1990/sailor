@@ -55,7 +55,7 @@ public class Q3LongestSubstringWithoutRepeatingCharacters {
         Solution solution = new Q3LongestSubstringWithoutRepeatingCharacters().new Solution();
 //          System.out.println(solution.lengthOfLongestSubstring("abcabcbb"));
 //          System.out.println(solution.lengthOfLongestSubstring("pwwkew"));
-        System.out.println(solution.lengthOfLongestSubstring("abba")); //To clear this scene
+        System.out.println(solution.lengthOfLongestSubstring2("abbac")); //To clear this scene
     }
 
     //leetcode submit region begin(Prohibit modification and deletion)

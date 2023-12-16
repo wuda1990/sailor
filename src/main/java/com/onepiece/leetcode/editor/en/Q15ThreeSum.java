@@ -50,6 +50,7 @@ package com.onepiece.leetcode.editor.en;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Scanner;
 
 public class Q15ThreeSum {
     //2023-03-12 14:43:49
@@ -57,10 +58,17 @@ public class Q15ThreeSum {
     //编号：[15]
     public static void main(String[] args) {
         Solution solution = new Q15ThreeSum().new Solution();
+        Scanner scanner = new Scanner(System.in);
+        while (scanner.hasNextLine()) {
+            final String line = scanner.nextLine();
+            //spit the line and convert to int array
+            int[] nums = Arrays.stream(line.split("\\s|,")).mapToInt(Integer::parseInt).toArray();
+            System.out.println(solution.threeSum(nums));
+        }
 //          solution.threeSum(new int[]{-1, 0, 1, 2, -1, -4});
 //          solution.threeSum(new int[]{0, 0, 0});
 //          solution.threeSum(new int[]{-2,0,1,1,2});
-        solution.threeSum(new int[]{0, 1, 1});
+//        solution.threeSum(new int[]{0, 1, 1});
     }
 
     //leetcode submit region begin(Prohibit modification and deletion)
@@ -83,14 +91,14 @@ public class Q15ThreeSum {
                     int sum = nums[left] + nums[right] + nums[i];
                     if (sum == 0) {
                         result.add(Arrays.asList(nums[left], nums[right], nums[i]));
-                        left++;
-                        while (left < right && nums[left] == nums[left - 1]) {
+                        while (left < right && nums[left] == nums[left + 1]) {
                             left++;
                         }
-                        right--;
-                        while (right > left && nums[right] == nums[right + 1]) {
+                        while (left < right && nums[right] == nums[right - 1]) {
                             right--;
                         }
+                        left++;
+                        right--;
                     } else if (sum < 0) {
                         left++;
                     } else {

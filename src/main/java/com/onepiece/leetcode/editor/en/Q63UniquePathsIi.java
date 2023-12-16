@@ -47,6 +47,7 @@
 package com.onepiece.leetcode.editor.en;
 
 public class Q63UniquePathsIi {
+
     public static void main(String[] args) {
         Solution solution = new Q63UniquePathsIi().new Solution();
         solution.uniquePathsWithObstacles0(new int[][]{{0}, {1}});
@@ -54,6 +55,7 @@ public class Q63UniquePathsIi {
 
     //leetcode submit region begin(Prohibit modification and deletion)
     class Solution {
+
         public int uniquePathsWithObstacles0(int[][] obstacleGrid) {
             int m = obstacleGrid.length;
             if (m == 0) {
@@ -62,10 +64,7 @@ public class Q63UniquePathsIi {
             int n = obstacleGrid[0].length;
             int[] dp = new int[n];
 
-            for (int j = 0; j < n; j++) {
-                if (obstacleGrid[0][j] == 1) {
-                    break;
-                }
+            for (int j = 0; j < n && obstacleGrid[0][j] != 1; j++) {
                 dp[j] = 1;
             }
             for (int i = 1; i < m; i++) {
@@ -98,7 +97,7 @@ public class Q63UniquePathsIi {
                 for (int j = 1; j < n; j++) {
                     if (obstacleGrid[i][j] == 1) {
                         dp[i][j] = 0;
-                    }else {
+                    } else {
                         dp[i][j] = dp[i - 1][j] + dp[i][j - 1];
                     }
                 }
