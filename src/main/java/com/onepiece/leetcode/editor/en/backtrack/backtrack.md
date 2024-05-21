@@ -1,4 +1,4 @@
-# array examples
+# backtrack examples
 
 ___
 

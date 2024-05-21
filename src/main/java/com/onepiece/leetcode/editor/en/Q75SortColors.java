@@ -14,6 +14,7 @@
 //Input: nums = [2,0,2,1,1,0]
 //1: 0,0,2,1,1,2,
 //2: 0,0,1,1,2,2
+
 //Output: [0,0,1,1,2,2]
 // 
 //
@@ -59,7 +60,7 @@ public class Q75SortColors {
             final String line = scanner.nextLine();
             //spit the line and convert to int array
             int[] nums = Arrays.stream(line.split("[,|\\s]+")).mapToInt(Integer::parseInt).toArray();
-            solution.sortColors(nums);
+            solution.sortColors0(nums);
             System.out.println(Arrays.toString(nums));
         }
     }
@@ -71,7 +72,8 @@ public class Q75SortColors {
         public void sortColors0(int[] nums) {
             int l = 0, r = nums.length - 1;
             // nums on the left of l eq 0, nums on the right of r eq 2.
-            // double pointer, l denotes the first number that is not 0 form left, r denotes the first number that is not 2 from right
+            // double pointer, l denotes the first number that is not 0 form left, r denotes the first number that is not 2 from right,
+            // k denotes the current number
             for (int k = l; k <= r; ) {
                 if (nums[k] == 0) {
                     swap(nums, k++, l++);
@@ -89,22 +91,17 @@ public class Q75SortColors {
             int l = 0, r = nums.length - 1;
             // nums on the left of l eq 0, nums on the right of r eq 2.
             // double pointer, l denotes the first number that is not 0 form left, r denotes the first number that is not 2 from right
-            while (l < r) {
+            // 2 1 0
+            while (l <= r) {
                 // find the first number that is not 0 from left
-                while (l < r && nums[l] == 0) {
+                while (l < r && nums[l] != 2) {
                     l++;
                 }
                 // find the first number that is not 2 from right
-                while (l < r && nums[r] == 2) {
+                while (l < r && nums[r] != 0) {
                     r--;
                 }
-                //if the num[l]==num[r]==1, then l++, r--, otherwise swap
-                if(nums[l] == 1 && nums[r] == 1) {
-                    l++;
-                    r--;
-                } else {
-                    swap(nums, l, r);
-                }
+                swap(nums, l, r);
             }
         }
 
