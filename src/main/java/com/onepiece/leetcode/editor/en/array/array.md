@@ -2,7 +2,7 @@
 
 ___
 
-* [TwoSum](../Q1TwoSum.java)
+* [Q1TwoSum](../Q1TwoSum.java)
 * [Q3LongestSubstringWithoutRepeatingCharacters](../Q3LongestSubstringWithoutRepeatingCharacters.java)
 * [Q15ThreeSum](../Q15ThreeSum.java)
 * [Q18FourSum](../Q18FourSum.java)
