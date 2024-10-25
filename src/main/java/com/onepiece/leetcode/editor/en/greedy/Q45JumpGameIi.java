@@ -55,9 +55,9 @@ class Solution {
     public int jump(int[] nums) {
         int steps = 0;
         int start = 0;
-        int end = 1;// Todo why end initial with 1
-        //because firstly we select one number, 左闭右开
-        //
+        int end = 1;
+        // why end initials with 1,because firstly we select one number, 左闭右开
+
         while (end < nums.length) {
             // 确定最远的跳跃范围
             int maxPosition = 0;
