@@ -38,47 +38,52 @@
 // 👍 5189 👎 787
 
 
-  package com.onepiece.leetcode.editor.en;
-  public class Q81SearchInRotatedSortedArrayIi{
- //2022-10-08 18:37:58
+package com.onepiece.leetcode.editor.en;
+
+public class Q81SearchInRotatedSortedArrayIi {
+
+    //2022-10-08 18:37:58
     //Search in Rotated Sorted Array II
     //编号：[81]
-      public static void main(String[] args) {
-           Solution solution = new Q81SearchInRotatedSortedArrayIi().new Solution();
-          System.out.println(solution.search(new int[]{1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2, 1, 1, 1, 1, 1}, 2));
-      }
-      //leetcode submit region begin(Prohibit modification and deletion)
-class Solution {
-          // it is similar to Question 154 find minimum in rotated sorted array
-    public boolean search(int[] nums, int target) {
-        int left = 0, right = nums.length - 1;
-        while (left < right - 1) {
-            int mid = left + ((right - left) >> 1);
-            if (target == nums[mid]) {
+    public static void main(String[] args) {
+        Solution solution = new Q81SearchInRotatedSortedArrayIi().new Solution();
+        System.out.println(solution.search(new int[]{1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2, 1, 1, 1, 1, 1}, 2));
+    }
+
+    //leetcode submit region begin(Prohibit modification and deletion)
+    class Solution {
+
+        // it is similar to Question 154 find minimum in rotated sorted array
+        //Todo Check the difference with Q33 at nigh
+        public boolean search(int[] nums, int target) {
+            int left = 0, right = nums.length - 1;
+            while (left < right - 1) {
+                int mid = left + ((right - left) >> 1);
+                if (target == nums[mid]) {
+                    return true;
+                }
+                if (nums[mid] > nums[right]) {
+                    if (target >= nums[left] && target < nums[mid]) {
+                        right = mid;
+                    } else {
+                        left = mid;
+                    }
+                } else if (nums[mid] < nums[right]) {
+                    if (target > nums[mid] && target <= nums[right]) {
+                        left = mid;
+                    } else {
+                        right = mid;
+                    }
+                } else {
+                    right--;
+                }
+            }
+            if (nums[left] == target || nums[right] == target) {
                 return true;
             }
-            if (nums[mid] > nums[right]) {
-                if (target >= nums[left] && target < nums[mid]) {
-                    right = mid;
-                }else {
-                    left = mid;
-                }
-            } else if (nums[mid] < nums[right]) {
-                if (target > nums[mid] && target <= nums[right]) {
-                    left = mid;
-                }else {
-                    right = mid;
-                }
-            }else {
-                right--;
-            }
+            return false;
         }
-        if (nums[left] == target || nums[right] == target) {
-            return true;
-        }
-        return false;
     }
-}
 //leetcode submit region end(Prohibit modification and deletion)
 
-  }
+}
